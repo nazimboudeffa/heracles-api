@@ -1,4 +1,6 @@
 import { createContainer, asValue } from "awilix"
+import modelsLoader from "./models.js"
+import servicesLoader from "./services.js"
 import expressLoader from "./express.js"
 import mongooseLoader from "./mongoose.js"
 import apiLoader from "./api.js"
@@ -9,7 +11,7 @@ export default async ({ expressApp }) => {
     container.registerAdd = function(name, registration) {
       let boardKey = name + "_BOARD"
   
-      if (this.registrations[storeKey] === undefined) {
+      if (this.registrations[boardKey] === undefined) {
         this.register(boardKey, asValue([]))
       }
       let board = this.resolve(boardKey)
@@ -25,6 +27,12 @@ export default async ({ expressApp }) => {
     container.register({
       logger: asValue(Logger),
     })
+
+    await modelsLoader({ container })
+    Logger.info("Models initialized")
+
+    await servicesLoader({ container })
+    Logger.info("Services initialized")
   
     await mongooseLoader()
     Logger.info("MongoDB Intialized")
@@ -40,6 +48,7 @@ export default async ({ expressApp }) => {
   
     await apiLoader({ app: expressApp })
     Logger.info("API initialized")
+
   }
   
   function asArray(resolvers) {
