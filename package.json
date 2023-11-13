@@ -1,5 +1,5 @@
 {
-  "name": "jobs-rest-api",
+  "name": "jobber-api",
   "version": "1.0.0",
   "description": "An API for job boards",
   "main": "index.js",
