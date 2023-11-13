@@ -1,10 +1,10 @@
 import { Router } from "express"
-import JobModel from '../../../models/job.js';
-import {StatusCodes} from 'http-status-codes';
+import { StatusCodes } from "http-status-codes"
 
 const createJob = async (req, res) => {
     try {
-        const job = await JobModel.create({...req.body})
+        const jobModel = req.scope.resolve("jobModel")
+        const job = await jobModel.create({...req.body})
         res.status(StatusCodes.CREATED).json({success : true, job, msg : 'Successfully Created'});
     } catch (error) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({success : false, error : error.message});
