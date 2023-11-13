@@ -14,11 +14,9 @@ const createJob = async (req, res) => {
 const route = Router()
 
 export default app => {
-  app.use("/jobs", route)
+  app.use("/admin", route)
 
   route.post("/create-job", createJob)
-
-  // route.get("/:productId", middlewares.wrap(require("./get-product").default))
 
   return app
 }
