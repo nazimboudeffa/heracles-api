@@ -1,5 +1,5 @@
-import { default as wrap } from "./await-middleware.js"
+import { default as authenticate } from "./authentication.js"
 
 export default {
-  wrap
+  authenticate
 }
