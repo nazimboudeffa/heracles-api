@@ -1,3 +1,4 @@
+import Joi from "joi";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import asyncHandler from "express-async-handler";
@@ -19,7 +20,7 @@ export default asyncHandler(async (req, res) => {
       throw error
     }
 
-    const { email, password } = { value };
+    const { email, password } = value
     const userModel = req.scope.resolve("userModel")
   
     if (!email || !password) {
