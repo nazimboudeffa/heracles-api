@@ -20,7 +20,7 @@ export default asyncHandler(async (req, res) => {
       throw error
     }
 
-    const { email, password } = { value }
+    const { email, password } = value
     const userModel = req.scope.resolve("userModel")
   
     if (!email || !password) {
