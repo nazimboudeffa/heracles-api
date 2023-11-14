@@ -9,7 +9,7 @@ export default app => {
   app.use("/jobs", route)
 
   route.get("/", listJobs)
-  route.post("/create-job", middlewares.authenticate(createJob))
+  route.post("/create-job", createJob)
 
   return app
 }

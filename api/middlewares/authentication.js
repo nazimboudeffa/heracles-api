@@ -1,17 +1,17 @@
 import jwt from 'jsonwebtoken';
+import config from '../config/index.js';
 
-export default () => { return (req, res, next) => {
-  console.log(req.headers);
-  const {authorization:auth} = req.headers;
-  if(!auth || !auth.startsWith('Bearer ')) throw new Error('Authentication failed');
-  try {
-      const token = auth.split(' ')[1]
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      //attach the user to the jobs route
-      req.user = {_id : decoded._id, email : decoded.email};
-      next();
-  } catch (error) {
-      throw new Error('Authentication failed')
+export default (req, res, next) => {
+  if(req.headrers.authorization && req.headrers.authorization.startsWith('Bearer')) {
+    try {
+        const token = auth.split(' ')[1]
+        const decoded = jwt.verify(token, config.jwtSecret);
+        //attach the user to the jobs route
+        req.user = {_id : decoded.id};
+        next();
+    } catch (error) {
+        res.status(401).json({success : false, error : error.message});
+        throw new Error('Not Authorized')
+    }
   }
- }
 }
