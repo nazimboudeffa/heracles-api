@@ -1,8 +1,8 @@
 /**
- * @typedef JobberErrorType
+ * @typedef ErrorType
  *
  */
-export const JobberErrorTypes = {
+export const SookyErrorTypes = {
     /** Errors stemming from the database */
     DB_ERROR: "database_error",
     INVALID_ARGUMENT: "invalid_argument",
@@ -15,10 +15,10 @@ export const JobberErrorTypes = {
    * Standardized error to be used across Jobber project.
    * @extends Error
    */
-  class JobberError extends Error {
+  class SookyError extends Error {
     /**
-     * Creates a standardized error to be used across Medusa project.
-     * @param type {MedusaErrorType} - the type of error.
+     * Creates a standardized error to be used across Sooky project.
+     * @param type {SookyErrorType} - the type of error.
      * @param params {Array} - Error params.
      */
     constructor(name, message, ...params) {
@@ -34,7 +34,7 @@ export const JobberErrorTypes = {
     }
   }
   
-  JobberError.Types = JobberErrorTypes
+  SookyError.Types = SookyErrorTypes
   
-  export default JobberError
+  export default SookyError
   

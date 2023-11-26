@@ -1,19 +1,19 @@
 import mongoose from "mongoose"
 import _ from "lodash"
-import JobberError from "../core-utils/errors.js"
+import SookyError from "../core-utils/errors.js"
 import BaseService from "../interfaces/base-service.js"
 
 /**
  * Provides layer to manipulate products.
  * @implements BaseService
  */
-class JobService extends BaseService {
-  /** @param { jobModel: (JobModel) } */
-  constructor({ jobModel, eventBusService }) {
+class ProductService extends BaseService {
+  /** @param { productModel: (ProductModel) } */
+  constructor({ productModel, eventBusService }) {
     super()
 
     /** @private @const {ProductModel} */
-    this.jobModel_ = jobModel
+    this.productModel_ = productModel
 
     /** @private @const {EventBus} */
     this.eventBus_ = eventBusService
@@ -24,8 +24,8 @@ class JobService extends BaseService {
    * @return {Promise} the result of the find operation
    */
   list(selector) {
-    return this.jobModel_.find(selector)
+    return this.productModel_.find(selector)
   }
 }
 
-export default JobService
+export default ProductService

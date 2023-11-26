@@ -1,10 +1,10 @@
 import { Router } from "express"
-import jobRoutes from "./jobs/index.js"
+import jobRoutes from "./products/index.js"
 
 const route = Router()
 
 export default app => {
-  app.use("/board", route)
+  app.use("/store", route)
 
   jobRoutes(route)
 

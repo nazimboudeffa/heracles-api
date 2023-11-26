@@ -1,7 +1,7 @@
 import BaseModel from '../interfaces/base-model.js';
 
-class JobModel extends BaseModel {
-    static modelName = "Job"
+class ProductModel extends BaseModel {
+    static modelName = "Product"
     static schema = {
         title: {
             type: String,
@@ -16,6 +16,10 @@ class JobModel extends BaseModel {
             required: true,
             unique: true
         },
+        price: {
+            type: Number,
+            required: true,
+        },
         published: { 
             type: Boolean, 
             default: false 
@@ -27,4 +31,4 @@ class JobModel extends BaseModel {
     }
   }
   
-  export default JobModel
+  export default ProductModel

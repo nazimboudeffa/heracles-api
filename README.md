@@ -1,3 +1,3 @@
-# Jobs Rest API
+# Marketplace Rest API
 
 This is it!
